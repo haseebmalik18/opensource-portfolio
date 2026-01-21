@@ -1,0 +1,265 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0a0a0a;
+  --card: #111111;
+  --border: #1a1a1a;
+  --text: #e5e5e5;
+  --text-muted: #737373;
+  --accent: #a855f7;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+}
+
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-header h2 {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.section-header .count {
+  font-size: 12px;
+  padding: 2px 8px;
+  background: #1f1f1f;
+  border-radius: 4px;
+  color: var(--text-muted);
+}
+
+
+.contribution-card {
+  background: rgba(17, 17, 17, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.contribution-card:hover {
+  border-color: #2a2a2a;
+  background: rgba(20, 20, 20, 0.9);
+  transform: translateY(-2px);
+}
+
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.status-badge {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.status-badge.merged {
+  background: rgba(34, 197, 94, 0.1);
+  color: #4ade80;
+}
+
+.status-badge.open {
+  background: rgba(251, 191, 36, 0.1);
+  color: #fbbf24;
+}
+
+.pr-link {
+  font-size: 13px;
+  color: #6b7280;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.pr-link:hover {
+  color: #d4d4d4;
+}
+
+
+.card-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.card-title a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.card-title a:hover {
+  color: #d4d4d4;
+}
+
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.content-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.content-row .label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #525252;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.content-row p {
+  font-size: 14px;
+  color: #a3a3a3;
+  margin: 0;
+}
+
+
+.card-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.tech-tag {
+  font-size: 11px;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  color: #a1a1aa;
+}
+
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.social-link:hover {
+  border-color: #2a2a2a;
+  color: var(--text);
+}
+
+
+.filter-tab {
+  padding: 10px 20px;
+  background: rgba(17, 17, 17, 0.6);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-tab:hover {
+  background: rgba(17, 17, 17, 0.9);
+  border-color: rgba(168, 85, 247, 0.3);
+  color: var(--text);
+}
+
+.filter-tab.active {
+  background: rgba(168, 85, 247, 0.15);
+  border-color: rgba(168, 85, 247, 0.5);
+  color: #a855f7;
+}
+
+.count-badge {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.filter-tab.active .count-badge {
+  background: rgba(168, 85, 247, 0.3);
+}
+
+
+.social-link-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.social-link-hero:hover {
+  border-color: #3b3b3b;
+  color: var(--text);
+}
+
+
+.icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  color: #6b7280;
+  transition: all 0.2s ease;
+}
+
+.icon-link:hover {
+  color: #e5e5e5;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+
+.footer {
+  margin-top: 60px;
+  padding: 24px 0;
+  text-align: center;
+  font-size: 12px;
+  color: #3f3f46;
+}
