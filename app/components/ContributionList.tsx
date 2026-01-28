@@ -41,6 +41,16 @@ export const contributions: Contribution[] = [
     technologies: ["TypeScript", "Playwright", "Apache Airflow", "E2E Testing"],
     status: "merged",
   },
+  {
+    title: "Add E2E Test for DAG Grid View Display",
+    prLink: "https://github.com/apache/airflow/pull/60856",
+    prNumber: "60856",
+    problem: "Apache Airflow lacked E2E test coverage for the DAG grid view functionality on the detail page, making it difficult to verify that the grid renders correctly with task instances.",
+    solution: "Added comprehensive E2E tests using Playwright and Page Object Model pattern, including GridPage.ts for page interactions and test cases to verify grid rendering, task state colors, cell navigation, and tooltips.",
+    impact: "Improved test coverage for Airflow's grid view UI, ensuring the component functions correctly across various scenarios and user interactions.",
+    technologies: ["TypeScript", "Playwright", "Apache Airflow", "E2E Testing"],
+    status: "merged",
+  },
 ];
 
 export default function ContributionList() {
