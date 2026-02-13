@@ -51,6 +51,26 @@ export const contributions: Contribution[] = [
     technologies: ["TypeScript", "Playwright", "Apache Airflow", "E2E Testing"],
     status: "merged",
   },
+  {
+    title: "Add E2E Tests for DAG Runs Tab Functionality",
+    prLink: "https://github.com/apache/airflow/pull/61234",
+    prNumber: "61234",
+    problem: "Apache Airflow lacked E2E test coverage for the DAG runs tab, making it difficult to verify that DAG runs display correctly with navigation, filtering, search, and pagination.",
+    solution: "Implemented comprehensive E2E tests using Playwright and Page Object Model pattern, including DagRunsTabPage.ts for page interactions and test cases to verify DAG runs tab navigation, filtering, search, and pagination.",
+    impact: "Improved test coverage for Airflow's DAG runs tab UI, ensuring reliable functionality across navigation, filtering, and pagination scenarios.",
+    technologies: ["TypeScript", "Playwright", "Apache Airflow", "E2E Testing"],
+    status: "merged",
+  },
+  {
+    title: "Add Partition Key Support to Execution API Trigger DAG Run Endpoint",
+    prLink: "https://github.com/apache/airflow/pull/61301",
+    prNumber: "61301",
+    problem: "The execution API's trigger DAG run endpoint lacked partition key support, preventing the scheduler from routing triggered DAG runs to the correct partition when partition-based scheduling is enabled.",
+    solution: "Added a partition_key field to the TriggerDAGRunPayload, implemented version migration for the payload class, and regenerated the frontend OpenAPI specification to support partition-based routing.",
+    impact: "Enabled proper job distribution in partitioned scheduling scenarios, allowing enterprise users to leverage partition-based scheduling with triggered DAG runs.",
+    technologies: ["Python", "Apache Airflow", "REST API", "Task SDK"],
+    status: "merged",
+  },
 ];
 
 export default function ContributionList() {
