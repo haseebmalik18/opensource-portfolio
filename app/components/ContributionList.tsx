@@ -71,6 +71,16 @@ export const contributions: Contribution[] = [
     technologies: ["Python", "Apache Airflow", "REST API", "Task SDK"],
     status: "merged",
   },
+  {
+    title: "Add E2E Tests for Pools Page Functionality",
+    prLink: "https://github.com/apache/airflow/pull/62149",
+    prNumber: "62149",
+    problem: "Apache Airflow lacked E2E test coverage for the Pools page, making it difficult to verify that pool creation, editing, deletion, and display work correctly.",
+    solution: "Implemented comprehensive E2E tests for the /pools page using Playwright and Page Object Model pattern, covering pools listing, creation, editing, deletion, and validation of pool functionality.",
+    impact: "Improved test coverage for Airflow's Pools UI, ensuring reliable resource pool management and catching regressions before they reach production.",
+    technologies: ["TypeScript", "Playwright", "Apache Airflow", "E2E Testing"],
+    status: "merged",
+  },
 ];
 
 export default function ContributionList() {
