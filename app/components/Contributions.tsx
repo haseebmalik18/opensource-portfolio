@@ -20,6 +20,36 @@ const contributions: Contribution[] = [
     technologies: ["Python", "Apache Airflow", "GCSHook", "Cloud", "ETL"],
     status: "merged",
   },
+  {
+    title: "Migrate Salesforce Connection UI Metadata to YAML",
+    prLink: "https://github.com/apache/airflow/pull/62446",
+    prNumber: "PR #62446",
+    problem: "The Salesforce provider's connection UI metadata was hardcoded in Python, inconsistent with the project's move toward declarative YAML-based configuration.",
+    solution: "Migrated conn-fields and ui-field-behaviour for the Salesforce connection to provider.yaml, aligning with the YAML-first configuration standard.",
+    impact: "Improved maintainability and consistency of provider metadata, supporting Airflow's transition to a unified YAML-based provider configuration system.",
+    technologies: ["Python", "Apache Airflow", "YAML", "Provider Configuration"],
+    status: "merged",
+  },
+  {
+    title: "Migrate Postgres Connection UI Metadata to YAML",
+    prLink: "https://github.com/apache/airflow/pull/62445",
+    prNumber: "PR #62445",
+    problem: "The Postgres provider's connection UI metadata was hardcoded in Python, inconsistent with the project's move toward declarative YAML-based configuration.",
+    solution: "Migrated ui-field-behaviour for the Postgres connection to provider.yaml, aligning with the YAML-first configuration standard.",
+    impact: "Improved maintainability and consistency of provider metadata, supporting Airflow's transition to a unified YAML-based provider configuration system.",
+    technologies: ["Python", "Apache Airflow", "YAML", "Provider Configuration"],
+    status: "merged",
+  },
+  {
+    title: "Migrate Mongo Connection UI Metadata to YAML",
+    prLink: "https://github.com/apache/airflow/pull/62444",
+    prNumber: "PR #62444",
+    problem: "The Mongo provider's connection UI metadata was hardcoded in Python, inconsistent with the project's move toward declarative YAML-based configuration.",
+    solution: "Migrated conn-fields and ui-field-behaviour for the Mongo connection to provider.yaml, aligning with the YAML-first configuration standard.",
+    impact: "Improved maintainability and consistency of provider metadata, supporting Airflow's transition to a unified YAML-based provider configuration system.",
+    technologies: ["Python", "Apache Airflow", "YAML", "Provider Configuration"],
+    status: "merged",
+  },
 
 ];
 
