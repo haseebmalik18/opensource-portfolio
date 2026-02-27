@@ -12,6 +12,16 @@ export interface Contribution {
 
 export const contributions: Contribution[] = [
   {
+    title: "Clean up stale Python 3.9 workaround in airflow-ctl CLI config parser",
+    prLink: "https://github.com/apache/airflow/pull/62206",
+    prNumber: "62206",
+    problem: "The airflow-ctl CLI config parser had a workaround for Python 3.9 that used string splitting to parse union return type annotations.",
+    solution: "Replaced the stale workaround with a _union_members() helper that walks the AST directly using ast.BinOp nodes, leveraging modern Python union syntax.",
+    impact: "Improved code maintainability by removing legacy compatibility hacks, making the CLI config parser cleaner and easier to extend.",
+    technologies: ["Python", "Apache Airflow", "AST", "CLI"],
+    status: "merged",
+  },
+  {
     title: "Google Cloud Storage Export for Databricks",
     prLink: "https://github.com/apache/airflow/pull/60543",
     prNumber: "60543",
