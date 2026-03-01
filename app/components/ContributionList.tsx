@@ -12,6 +12,16 @@ export interface Contribution {
 
 export const contributions: Contribution[] = [
   {
+    title: "Fix tpl rendering for TLS hosts in ingress templates",
+    prLink: "https://github.com/apache/airflow/pull/62548",
+    prNumber: "62548",
+    problem: "Go template expressions in TLS hosts within Airflow's Helm chart ingress templates were not being resolved, causing inconsistency between spec.rules[*].host and spec.tls[*].hosts.",
+    solution: "Applied tpl rendering to TLS hosts across all ingress templates (api-server, flower, pgbouncer, statsd, webserver) and updated corresponding Helm tests to verify correct template resolution.",
+    impact: "Ensured consistent Go template resolution across all ingress configurations, preventing deployment issues when using dynamic host values in TLS settings.",
+    technologies: ["Helm", "Kubernetes", "Apache Airflow", "Go Templates", "Python"],
+    status: "merged",
+  },
+  {
     title: "Clean up stale Python 3.9 workaround in airflow-ctl CLI config parser",
     prLink: "https://github.com/apache/airflow/pull/62206",
     prNumber: "62206",
