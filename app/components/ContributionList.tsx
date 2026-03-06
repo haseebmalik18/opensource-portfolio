@@ -12,6 +12,26 @@ export interface Contribution {
 
 export const contributions: Contribution[] = [
   {
+    title: "Fix Flaky MySQL Test Failures with Retry Logic",
+    prLink: "https://github.com/apache/airflow/pull/62823",
+    prNumber: "62823",
+    problem: "MySQL unit tests intermittently failed with 'Lost connection to server during query' errors during test database setup, which couldn't be caught by connection pool pre-ping checks alone.",
+    solution: "Added a _retry_db decorator to wrap database cleanup utility functions, applying the existing run_with_db_retries utility to clear_db_* functions to automatically retry operations on transient DBAPIError exceptions.",
+    impact: "Stabilized flaky MySQL test infrastructure by providing resilience against mid-query connection failures, reducing false test failures in CI pipelines.",
+    technologies: ["Python", "Apache Airflow", "MySQL", "Testing"],
+    status: "merged",
+  },
+  {
+    title: "Fix Task Log Filters Not Working in Fullscreen Mode",
+    prLink: "https://github.com/apache/airflow/pull/62747",
+    prNumber: "62747",
+    problem: "Log level, source, and settings dropdowns failed to render properly when the task logs view was displayed in fullscreen mode, preventing users from filtering log output.",
+    solution: "Passed the isFullscreen prop to TaskLogHeader to activate z-index fixes when the fullscreen dialog opens, and added the missing zIndex to the source filter's Select.Content component.",
+    impact: "Restored full filtering functionality in fullscreen task log views, ensuring functional parity between normal and fullscreen viewing modes.",
+    technologies: ["TypeScript", "React", "Apache Airflow", "UI/UX"],
+    status: "merged",
+  },
+  {
     title: "Fix tpl rendering for TLS hosts in ingress templates",
     prLink: "https://github.com/apache/airflow/pull/62548",
     prNumber: "62548",
