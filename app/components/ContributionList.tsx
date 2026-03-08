@@ -12,6 +12,16 @@ export interface Contribution {
 
 export const contributions: Contribution[] = [
   {
+    title: "Improve Playwright test patterns in BasePage.ts",
+    prLink: "https://github.com/apache/airflow/pull/63079",
+    prNumber: "63079",
+    problem: "BasePage.ts used CSS :has-text() selectors for locating elements and had an unnecessary intermediate variable in isLoggedIn(), diverging from Playwright best practices.",
+    solution: "Replaced CSS :has-text() selectors with getByRole() locators and removed the redundant currentUrl variable in isLoggedIn() for a cleaner implementation.",
+    impact: "Improved test readability and resilience by adopting Playwright's recommended locator strategies, making e2e tests more maintainable and less brittle.",
+    technologies: ["TypeScript", "Playwright", "Apache Airflow", "E2E Testing"],
+    status: "merged",
+  },
+  {
     title: "Fix Flaky MySQL Test Failures with Retry Logic",
     prLink: "https://github.com/apache/airflow/pull/62823",
     prNumber: "62823",
