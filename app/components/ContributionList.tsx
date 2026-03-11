@@ -12,6 +12,16 @@ export interface Contribution {
 
 export const contributions: Contribution[] = [
   {
+    title: "Add start_from_trigger support for DataprocSubmitJobOperator",
+    prLink: "https://github.com/apache/airflow/pull/62331",
+    prNumber: "62331",
+    problem: "DataprocSubmitJobOperator required a worker slot to submit and poll Dataproc jobs, wasting resources while waiting for long-running jobs to complete.",
+    solution: "Added start_from_trigger support with a new DataprocSubmitJobDirectTrigger that handles both job submission and polling entirely on the triggerer side, bypassing the worker.",
+    impact: "Freed up worker slots for compute-intensive tasks by offloading Dataproc job submission and monitoring to the lightweight triggerer, improving cluster resource utilization.",
+    technologies: ["Python", "Apache Airflow", "Google Cloud Dataproc", "Async"],
+    status: "merged",
+  },
+  {
     title: "Improve Playwright test patterns in BasePage.ts",
     prLink: "https://github.com/apache/airflow/pull/63079",
     prNumber: "63079",
