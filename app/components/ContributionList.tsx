@@ -12,6 +12,16 @@ export interface Contribution {
 
 export const contributions: Contribution[] = [
   {
+    title: "Improve Playwright test patterns in dag-code-tab.spec.ts",
+    prLink: "https://github.com/apache/airflow/pull/63416",
+    prNumber: "63416",
+    problem: "DagCodePage.ts used manual waitFor(), count assertions, textContent(), getAttribute(), and one-shot evaluate() patterns that diverged from Playwright best practices.",
+    solution: "Replaced waitFor() with expect().toBeVisible() web-first assertions, manual count assertions with expect().not.toHaveCount(0), textContent() with expect().toHaveText(), getAttribute() with expect().toHaveAttribute(), and one-shot evaluate() with expect.poll() retrying assertions. Moved inline viewLines locator to a class property.",
+    impact: "Improved test resilience and readability by adopting Playwright's recommended web-first assertion patterns, reducing flakiness and making e2e tests more maintainable.",
+    technologies: ["TypeScript", "Playwright", "Apache Airflow", "E2E Testing"],
+    status: "merged",
+  },
+  {
     title: "Add start_from_trigger support for DataprocSubmitJobOperator",
     prLink: "https://github.com/apache/airflow/pull/62331",
     prNumber: "62331",
