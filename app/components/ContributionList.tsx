@@ -12,6 +12,16 @@ export interface Contribution {
 
 export const contributions: Contribution[] = [
   {
+    title: "Improve Playwright test patterns in dag-grid-view.spec.ts",
+    prLink: "https://github.com/apache/airflow/pull/63415",
+    prNumber: "63415",
+    problem: "dag-grid-view.spec.ts and GridPage.ts used page.evaluate(), CSS attribute selectors, manual role selectors, imperative count checks, and per-test setTimeout, diverging from Playwright best practices.",
+    solution: "Replaced page.evaluate() with toHaveCSS() web-first assertion, CSS a[href*=\"/tasks/\"] selector with [data-node-id] data attribute, manual role selector with getByRole(\"tooltip\"), imperative count checks with not.toHaveCount(0), and moved per-test setTimeout to describe-level.",
+    impact: "Improved test resilience and readability by adopting Playwright's recommended web-first assertions and locator strategies, reducing flakiness and simplifying test configuration.",
+    technologies: ["TypeScript", "Playwright", "Apache Airflow", "E2E Testing"],
+    status: "merged",
+  },
+  {
     title: "Improve Playwright test patterns in dag-code-tab.spec.ts",
     prLink: "https://github.com/apache/airflow/pull/63416",
     prNumber: "63416",
