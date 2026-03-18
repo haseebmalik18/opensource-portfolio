@@ -12,6 +12,16 @@ export interface Contribution {
 
 export const contributions: Contribution[] = [
   {
+    title: "Fix getDuration not showing elapsed time for running tasks",
+    prLink: "https://github.com/apache/airflow/pull/63619",
+    prNumber: "63619",
+    problem: "getDuration did not fall back to the current time when endDate was null, causing running tasks and DAG runs to display no elapsed duration instead of the time elapsed so far.",
+    solution: "Restored getDuration to fall back to the current time when endDate is null, so running tasks and DAG runs correctly display their elapsed duration.",
+    impact: "Fixed a UI bug where running tasks and DAG runs showed no duration, improving real-time visibility into in-progress execution times.",
+    technologies: ["TypeScript", "Apache Airflow", "React", "UI"],
+    status: "merged",
+  },
+  {
     title: "Improve Playwright test patterns in dag-grid-view.spec.ts",
     prLink: "https://github.com/apache/airflow/pull/63415",
     prNumber: "63415",
