@@ -12,6 +12,26 @@ export interface Contribution {
 
 export const contributions: Contribution[] = [
   {
+    title: "Fix Gantt view still visible when time range is outside dagrun window",
+    prLink: "https://github.com/apache/airflow/pull/64179",
+    prNumber: "64179",
+    problem: "The Gantt view component did not respect time range filter properties that the Grid view already implemented, causing the Gantt visualization to remain visible when users selected a time range outside the dagrun window.",
+    solution: "Passed existing time range filter props (runAfterGte and runAfterLte) to the Gantt component, ensuring it applies the same filtering logic as the Grid view and hides when the selected run falls outside the filtered results.",
+    impact: "Ensured consistent filtering behavior between Grid and Gantt views, preventing confusing display of out-of-range data in the Gantt visualization.",
+    technologies: ["TypeScript", "React", "Apache Airflow", "UI"],
+    status: "merged",
+  },
+  {
+    title: "Improve Playwright test patterns in pools.spec.ts",
+    prLink: "https://github.com/apache/airflow/pull/64328",
+    prNumber: "64328",
+    problem: "pools.spec.ts relied on anti-patterns like networkidle waits, hardcoded CSS selectors, and waitForTimeout() calls, diverging from Playwright best practices.",
+    solution: "Replaced waitForLoadState('networkidle') with UI-state assertions, eliminated waitForTimeout() in favor of web-first assertions, swapped CSS selectors for semantic getByLabel() locators, and changed page.locator('[data-testid]') to page.getByTestId().",
+    impact: "Improved test resilience and readability by adopting Playwright's recommended web-first assertions and semantic locator strategies, reducing flakiness in the pools e2e test suite.",
+    technologies: ["TypeScript", "Playwright", "Apache Airflow", "E2E Testing"],
+    status: "merged",
+  },
+  {
     title: "Fix getDuration not showing elapsed time for running tasks",
     prLink: "https://github.com/apache/airflow/pull/63619",
     prNumber: "63619",
