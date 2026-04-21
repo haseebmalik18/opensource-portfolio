@@ -12,6 +12,16 @@ export interface Contribution {
 
 export const contributions: Contribution[] = [
   {
+    title: "Update AwsAuthManager to support multi-team authorization",
+    prLink: "https://github.com/apache/airflow/pull/65393",
+    prNumber: "65393",
+    problem: "The AWS Auth Manager (Amazon Verified Permissions integration) had no concept of teams, so authorization decisions could not be scoped per team. This blocked multi-team support in Airflow's AWS auth flow.",
+    solution: "Added a Team entity to the AVP schema, introduced a team_name parameter throughout the authorization chain (facade, auth manager, and batch-filter methods), enriched AVP request contexts with team information, and implemented a new is_authorized_team method. Updated the Cedar schema to accept an optional team_name context attribute on all resource actions.",
+    impact: "Enabled team-scoped authorization for connections, DAGs, pools, and variables in the AWS Auth Manager, allowing organizations to enforce fine-grained, per-team access control via Amazon Verified Permissions.",
+    technologies: ["Python", "AWS", "Amazon Verified Permissions", "Apache Airflow", "Authorization"],
+    status: "merged",
+  },
+  {
     title: "Fix Gantt view still visible when time range is outside dagrun window",
     prLink: "https://github.com/apache/airflow/pull/64179",
     prNumber: "64179",
