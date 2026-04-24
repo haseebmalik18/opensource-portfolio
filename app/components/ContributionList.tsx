@@ -12,6 +12,16 @@ export interface Contribution {
 
 export const contributions: Contribution[] = [
   {
+    title: "Improve Playwright test patterns in XComs page object",
+    prLink: "https://github.com/apache/airflow/pull/65645",
+    prNumber: "65645",
+    problem: "XComsPage.ts relied on anti-pattern locators like page.locator('[data-testid=\"...\"]'), CSS role selectors, filter({ hasText }) on elements, and manual assertions instead of Playwright's recommended web-first APIs.",
+    solution: "Replaced data-testid locators with getByTestId(), CSS role selectors with getByRole(), th filter({ hasText }) with getByRole('columnheader', { name }), locator('input') with getByRole('textbox'), manual count assertions with web-first assertions, textContent() checks with toHaveText(), and page.evaluate() DOM queries with locator-based .or() chains. Extracted a reusable tableRows locator to reduce repetition.",
+    impact: "Improved test resilience and readability in the XComs page object by adopting Playwright's recommended semantic locators and web-first assertions, reducing flakiness and improving maintainability.",
+    technologies: ["TypeScript", "Playwright", "Apache Airflow", "E2E Testing"],
+    status: "merged",
+  },
+  {
     title: "Update AwsAuthManager to support multi-team authorization",
     prLink: "https://github.com/apache/airflow/pull/65393",
     prNumber: "65393",
