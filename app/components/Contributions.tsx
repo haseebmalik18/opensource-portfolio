@@ -11,6 +11,16 @@ interface Contribution {
 
 const contributions: Contribution[] = [
   {
+    title: "Improve Playwright test patterns in connections e2e tests",
+    prLink: "https://github.com/apache/airflow/pull/66058",
+    prNumber: "PR #66058",
+    problem: "connections.spec.ts and ConnectionsPage.ts used redundant waitForLoadState('domcontentloaded') calls and manual expect(url).toContain() assertions instead of Playwright's recommended web-first APIs.",
+    solution: "Removed redundant waitForLoadState('domcontentloaded') in ConnectionsPage.ts and replaced manual expect(url).toContain() with web-first toHaveURL() in connections.spec.ts for auto-retry support.",
+    impact: "Improved test resilience and readability in the connections e2e tests by adopting Playwright's recommended web-first assertions, reducing flakiness and improving maintainability.",
+    technologies: ["TypeScript", "Playwright", "Apache Airflow", "E2E Testing"],
+    status: "merged",
+  },
+  {
     title: "Google Cloud Storage Export for Databricks",
     prLink: "https://github.com/apache/airflow/pull/60620",
     prNumber: "PR #60620",
