@@ -12,6 +12,16 @@ export interface Contribution {
 
 export const contributions: Contribution[] = [
   {
+    title: "Add dags next-execution command to airflowctl",
+    prLink: "https://github.com/apache/airflow/pull/66188",
+    prNumber: "66188",
+    problem: "airflowctl had no command to surface a DAG's upcoming scheduled run, forcing users to query the REST API directly or inspect the UI to find next execution times.",
+    solution: "Added a new `airflowctl dags next-execution` command that fetches next_dagrun_logical_date, next_dagrun_data_interval_start, next_dagrun_data_interval_end, and next_dagrun_run_after from the existing GET /api/v2/dags/{dag_id} endpoint, and prints a clear message when no upcoming run is scheduled.",
+    impact: "Gave airflowctl users a first-class CLI command to inspect a DAG's next scheduled execution, improving operability and bringing the CLI closer to feature parity with the UI and REST API.",
+    technologies: ["Python", "Apache Airflow", "airflowctl", "CLI"],
+    status: "merged",
+  },
+  {
     title: "Improve Playwright test patterns in connections e2e tests",
     prLink: "https://github.com/apache/airflow/pull/66058",
     prNumber: "66058",
