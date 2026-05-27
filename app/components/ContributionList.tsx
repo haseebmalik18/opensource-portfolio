@@ -12,6 +12,16 @@ export interface Contribution {
 
 export const contributions: Contribution[] = [
   {
+    title: "Rework StackdriverTaskHandler for the structlog era",
+    prLink: "https://github.com/apache/airflow/pull/65198",
+    prNumber: "65198",
+    problem: "StackdriverTaskHandler had not been migrated to Airflow's new structlog-based remote logging pattern, leaving Google Cloud Stackdriver out of step with other backends like CloudWatch, GCS, S3, and HDFS that were already modernized in #48491.",
+    solution: "Added a StackdriverRemoteLogIO class with structlog processors for real-time log streaming, along with upload() and read() methods that mirror the architecture used by the other migrated remote log backends.",
+    impact: "Brought Stackdriver logging in line with Airflow's modernized structlog-based remote log architecture, enabling real-time log streaming and consistent behavior across cloud log backends.",
+    technologies: ["Python", "Apache Airflow", "Google Cloud Stackdriver", "structlog", "Logging"],
+    status: "merged",
+  },
+  {
     title: "Add dags next-execution command to airflowctl",
     prLink: "https://github.com/apache/airflow/pull/66188",
     prNumber: "66188",
