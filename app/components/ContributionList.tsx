@@ -12,6 +12,16 @@ export interface Contribution {
 
 export const contributions: Contribution[] = [
   {
+    title: "Strengthen trigger-hash tests with a fully-serialized JSON guard and broader fixtures",
+    prLink: "https://github.com/apache/airflow/pull/67018",
+    prNumber: "67018",
+    problem: "The trigger-hash serialization tests in test_encoders.py only checked encode_trigger's direct output and exercised a narrow set of payload shapes, so regressions like double-wrapped encodings or mishandled datetime, timedelta, set/frozenset, str-Enum, and Path values could slip through (issue #66413).",
+    solution: "Added an `_assert_fully_serialized` helper that runs `json.dumps` on the encode_trigger output and asserts nothing got double-wrapped, wired it into the existing parametrized tests so every fixture is checked, and broadened `_TRIGGER_PARAMS` to cover datetime, timedelta, nested dict/tuple, set/frozenset, falsy primitives, str-Enum, and Path.",
+    impact: "Closed a gap in serialization test coverage for trigger encoding, catching double-wrapping regressions and ensuring a wider range of real-world payload types are validated end-to-end through JSON serialization.",
+    technologies: ["Python", "Apache Airflow", "pytest", "Serialization", "Testing"],
+    status: "merged",
+  },
+  {
     title: "Rework StackdriverTaskHandler for the structlog era",
     prLink: "https://github.com/apache/airflow/pull/65198",
     prNumber: "65198",
