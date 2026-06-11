@@ -12,6 +12,16 @@ export interface Contribution {
 
 export const contributions: Contribution[] = [
   {
+    title: "Fix setup/teardown auto-inclusion when clearing or marking tasks",
+    prLink: "https://github.com/apache/airflow/pull/68193",
+    prNumber: "68193",
+    problem: "Two related setup/teardown bugs surfaced in the Clear and Mark-State dialogs (issue #68184): `DAG.clear(task_ids=[...])` did not include the selected task's setup and teardown tasks even though the docs say it should, and `find_task_relatives(downstream=True)` incorrectly pulled downstream teardowns into mark-state actions.",
+    solution: "Fixed `DAG.clear` to auto-include the setup and teardown tasks attached to the selected task IDs, and updated `find_task_relatives` to skip teardown tasks when walking downstream so mark-state no longer sweeps them in. Added regression tests in test_cleartasks.py and test_mark_tasks.py covering both paths.",
+    impact: "Clearing a task now correctly carries along its setup/teardown as documented, and marking task state no longer drags unrelated downstream teardowns into the operation — aligning both dialogs with their intended, documented behavior.",
+    technologies: ["Python", "Apache Airflow", "pytest", "Testing"],
+    status: "merged",
+  },
+  {
     title: "Strengthen trigger-hash tests with a fully-serialized JSON guard and broader fixtures",
     prLink: "https://github.com/apache/airflow/pull/67018",
     prNumber: "67018",
