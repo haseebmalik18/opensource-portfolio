@@ -12,6 +12,16 @@ export interface Contribution {
 
 export const contributions: Contribution[] = [
   {
+    title: "Fix Dag detail page 500 for Dags without a fileloc",
+    prLink: "https://github.com/apache/airflow/pull/69110",
+    prNumber: "69110",
+    problem: "`DagModel.fileloc` is nullable, but `DAGResponse` typed it as `fileloc: str`, so a Dag that had runs but a null `fileloc` (for example one run through `dag.test()` or the system-test harness) made `GET /dags/{id}` and `/dags/{id}/details` fail validation and return 500 — leaving the detail page stuck loading (issue #69035).",
+    solution: "Made `fileloc` nullable on `DAGResponse` so those endpoints return 200, regenerated the OpenAPI spec, UI client, and airflow-ctl datamodels to match, and updated the UI to gracefully handle a missing file location. Added route tests in test_dags.py and a FileLocation.test.tsx covering the missing-fileloc path.",
+    impact: "Dag detail and details endpoints now return 200 for Dags without a file location, so the detail page renders the Dag and its runs instead of hanging on a 500 — fixing a broken page for test-harness and `dag.test()` Dags.",
+    technologies: ["Python", "Apache Airflow", "FastAPI", "TypeScript", "React", "pytest", "Testing"],
+    status: "merged",
+  },
+  {
     title: "Fix setup/teardown auto-inclusion when clearing or marking tasks",
     prLink: "https://github.com/apache/airflow/pull/68193",
     prNumber: "68193",
