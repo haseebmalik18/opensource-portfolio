@@ -12,6 +12,16 @@ export interface Contribution {
 
 export const contributions: Contribution[] = [
   {
+    title: "Mark `dags list-jobs` as migrated to airflowctl",
+    prLink: "https://github.com/apache/airflow/pull/70153",
+    prNumber: "70153",
+    problem: "As part of migrating Airflow's CLI to the standalone `airflowctl` client (issue #68402), commands with an `airflowctl` equivalent should surface a deprecation pointing users to it. `airflow dags list-jobs` had no such marker, and it could only be flagged once `airflowctl jobs list` reached parity, which it lacked until #68616 added `dag_id` filtering.",
+    solution: "Applied the `@deprecated_for_airflowctl(\"airflowctl jobs list\")` decorator to `dag_list_jobs` in dag_command.py now that `airflowctl jobs list` is a true equivalent, and registered the command in the parametrized test_command_deprecations.py suite so the deprecation message is verified.",
+    impact: "Running `airflow dags list-jobs` now guides users to the equivalent `airflowctl jobs list` command, advancing the broader CLI-to-airflowctl migration one command at a time.",
+    technologies: ["Python", "Apache Airflow", "CLI", "pytest", "Testing"],
+    status: "merged",
+  },
+  {
     title: "Fix Dag detail page 500 for Dags without a fileloc",
     prLink: "https://github.com/apache/airflow/pull/69110",
     prNumber: "69110",
