@@ -32,7 +32,7 @@ export default function Header() {
             GitHub
           </a>
           <a 
-            href="https://linkedin.com/in/haseebulhaq" 
+            href="https://www.linkedin.com/in/haseeb-malik-962700253/"
             target="_blank"
             rel="noopener noreferrer"
             className="social-link"

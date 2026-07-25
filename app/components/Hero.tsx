@@ -36,7 +36,7 @@ export default function Hero() {
             </svg>
           </a>
           <a
-            href="https://linkedin.com/in/haseebmalik18"
+            href="https://www.linkedin.com/in/haseeb-malik-962700253/"
             target="_blank"
             rel="noopener noreferrer"
             className="icon-link"
