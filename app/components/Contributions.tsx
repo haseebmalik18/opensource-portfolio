@@ -11,6 +11,26 @@ interface Contribution {
 
 const contributions: Contribution[] = [
   {
+    title: "Restore Dag-parse-time validation for Databricks Repos operators",
+    prLink: "https://github.com/apache/airflow/pull/70551",
+    prNumber: "PR #70551",
+    problem: "A prior change (#70341) moved the `branch`, `tag`, `repo_id`, and `repo_path` provision checks in `DatabricksReposCreate/Update/DeleteOperator` into `execute()`, so invalid argument combinations only failed at task-execution time rather than when the Dag was parsed — delaying feedback on misconfigured operators (related: #70503).",
+    solution: "Reverted #70341 by moving the `branch`/`tag`/`repo_id`/`repo_path` validation back into `__init__` in databricks_repos.py, while keeping the `repo_path` regex check in `execute()` since it reads the rendered value, and updated test_databricks_repos.py so the checks are exercised at construction time.",
+    impact: "Misconfigured Databricks Repos operators now fail fast at Dag-parse time instead of during execution, restoring earlier error detection and clearer feedback for users.",
+    technologies: ["Python", "Apache Airflow", "Databricks", "pytest", "Testing"],
+    status: "merged",
+  },
+  {
+    title: "Emit GCSToGCSOperator deprecation warnings after rendering",
+    prLink: "https://github.com/apache/airflow/pull/70449",
+    prNumber: "PR #70449",
+    problem: "`source_object`, `source_objects`, and `delimiter` on `GCSToGCSOperator` are template fields, so Jinja renders them after `__init__` runs. The wildcard and delimiter deprecation warnings were emitted in `__init__`, so they checked the raw `{{ ... }}` expressions instead of the rendered values (part of #70296).",
+    solution: "Moved the wildcard and delimiter deprecation checks out of `__init__` into a helper invoked at the start of `execute()` in gcs_to_gcs.py so they inspect rendered values, removed the operator from validate_operators_init_exemptions.txt, and added test_wildcard_deprecation_warning_uses_rendered_source_object in test_gcs_to_gcs.py that builds a real DAG to assert the warnings fire on rendered values.",
+    impact: "Wildcard and delimiter deprecation warnings on `GCSToGCSOperator` now reflect the actual rendered parameters instead of unrendered Jinja templates, so users get accurate deprecation guidance and no longer see false or missed warnings from templated inputs.",
+    technologies: ["Python", "Apache Airflow", "Google Cloud", "Jinja", "pytest", "Testing"],
+    status: "merged",
+  },
+  {
     title: "Mark `dags list-jobs` as migrated to airflowctl",
     prLink: "https://github.com/apache/airflow/pull/70153",
     prNumber: "PR #70153",
